@@ -31,16 +31,19 @@ Page({
   regionChange: function(e) {
     this.setData({region: e.detail.value});
     console.log(this.data.region);
+    
     this.getLocationId();
-    this.getWeather();
+    
+    
   },
 
-  /**
+    /**
    * 获取实况天气数据
    * @param {} options 
    */
   getWeather:function() {
     var that = this;
+    console.log("请求前locationid" + that.data.locationId);
     wx.request({
       url: 'https://devapi.qweather.com/v7/weather/now',
       // url:'https://api.qweather.com/s6/weather/now',
@@ -55,12 +58,13 @@ Page({
     });
   },
 
-  /**
-   * 获取位置信息
+    /**
+   * 获取位置id信息
    * @param {} options 
    */
-  getLocationId(){
+  getLocationId:function(){
     var that = this;
+    console.log("请求前位置region" + that.data.region[1]);
     wx.request({
       url: 'https://geoapi.qweather.com/v2/city/lookup',
       data: {
@@ -68,19 +72,25 @@ Page({
         key: '56a50a24c4f74866bba5e16ba2f52e44'
       },
       success: function(res) {
-        console.log(res.data);
+        // console.log(res.data);
         that.setData({locationId: res.data.location[0].id});
-        console.log(that.data.locationId);
+        that.getWeather();
       }
     });
   },
+
+
+
+  sleep:function(d){
+    for(var t = Date.now();Date.now() - t <= d;);
+  },
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.getLocationId();
-    this.getWeather();
   },
 
   /**
@@ -94,7 +104,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
