@@ -1,0 +1,49 @@
+/**index.wxss**/
+/* 视频组件样式 */
+video {
+  width: 100%;   /* 视频组件宽度为100 */
+} 
+
+.danmuArea {
+  display: flex;
+  flex-direction: row;  /* 水平方向排列*/
+}
+
+/* Area 2 */
+input {
+  border: 1rpx solid #987938;  /*1rpx宽的实线棕色边框*/
+  flex-grow: 1;  /*扩张多余空间宽度*/
+  height: 100rpx;  /*高度*/
+}
+
+button {
+  color: white;   /*字体颜色*/
+  background-color: #987938; /*背景颜色*/
+}
+
+/* Area3 */
+.videoList {
+  width: 100%;
+  min-height: 400rpx;
+}
+
+.videoBar {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid #987938;
+  margin: 10rpx; /*外边距*/
+}
+
+image {
+  width: 70rpx;
+  height: 70rpx;
+  margin: 20rpx;
+}
+
+text {
+  font-size: 45rpx;
+  color: #987938;
+  margin: 20rpx;
+  flex-grow: 1;
+}
